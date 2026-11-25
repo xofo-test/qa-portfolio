@@ -3,16 +3,12 @@ const primaryNav = document.querySelector('.primary-nav');
 
 function setMenuOpen(open) {
   menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   primaryNav.classList.toggle('is-open', open);
 }
 
 menuButton.addEventListener('click', () => {
   setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
-});
-
-primaryNav.addEventListener('click', (event) => {
-  if (event.target.closest('a')) setMenuOpen(false);
 });
 
 document.addEventListener('keydown', (event) => {
@@ -23,7 +19,8 @@ document.addEventListener('keydown', (event) => {
 });
 
 const filterButtons = document.querySelectorAll('.filter-button');
-const projectCards = document.querySelectorAll('.project-card');
+const projectGrid = document.querySelector('.project-grid');
+const projectCards = [...document.querySelectorAll('.project-card')];
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
@@ -32,9 +29,27 @@ filterButtons.forEach((button) => {
       item.classList.toggle('is-active', selected);
       item.setAttribute('aria-pressed', String(selected));
     });
-    projectCards.forEach((card) => {
-      card.hidden = filter !== 'all' && card.dataset.category !== filter;
+    const visibleCards = projectCards.filter((card) => {
+      const categories = card.dataset.category.split(' ');
+      return filter === 'all' || categories.includes(filter);
     });
+    projectGrid.replaceChildren(...visibleCards);
+  });
+});
+
+const projectDialog = document.querySelector('.project-dialog');
+const dialogTitle = document.querySelector('#project-dialog-title');
+const dialogDescription = document.querySelector('.project-dialog-description');
+const dialogTech = document.querySelector('.project-dialog-tech');
+const dialogRepo = document.querySelector('.project-dialog-repo');
+document.querySelectorAll('[data-project-view]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.project-card');
+    dialogTitle.textContent = card.querySelector('h3').textContent;
+    dialogDescription.textContent = card.querySelector('.project-info > p').textContent;
+    dialogTech.textContent = `Built with: ${[...card.querySelectorAll('.tech-tags span')].map((tag) => tag.textContent).join(', ')}`;
+    dialogRepo.href = card.querySelector('.project-meta a').href;
+    projectDialog.showModal();
   });
 });
 
@@ -73,7 +88,7 @@ contactForm.addEventListener('submit', (event) => {
     fields.find((field) => field.input.getAttribute('aria-invalid') === 'true').input.focus();
     return;
   }
-  formStatus.textContent = 'Thanks for reaching out. Your message is ready for Mina.';
+  formStatus.textContent = 'Thank you for reaching out. Your message is ready for Mina.';
   contactForm.reset();
   fields.forEach(({ input }) => input.removeAttribute('aria-invalid'));
 });

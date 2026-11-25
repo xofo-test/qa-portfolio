@@ -11,7 +11,7 @@ Open `index.html` in a modern browser. No build step or server is required.
 - `index.html` — portfolio content and accessible page structure
 - `css/style.css` — approved visual styles
 - `css/responsive.css` — responsive breakpoints and reduced-motion behavior
-- `js/script.js` — mobile navigation, project filters, and client-side contact validation
-- `assets/resume/mina-park-resume.txt` — downloadable sample résumé
+- `js/script.js` — mobile navigation, project details, filters, and client-side contact validation
+- `assets/resume/mina-park-resume.pdf` — downloadable sample résumé
 
 The profile, companies, education, email address, and social destinations are fictional sample content. Contact form submission is simulated in the browser and does not send or store the entered information.
