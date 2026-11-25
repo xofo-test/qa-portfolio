@@ -1,0 +1,22 @@
+Mina Park
+Senior Software Engineer | Chicago, Illinois
+mina.park@example.com
+
+PROFILE
+Software engineer with 9 years of experience building thoughtful, dependable digital products. Experienced in full-stack product engineering, technical direction, and helping teams deliver with confidence.
+
+EXPERIENCE
+Staff Software Engineer — Northstar Labs | 2021–Present
+Lead a cross-functional team building a workflow platform. Set technical direction and keep delivery grounded in customer needs.
+
+Senior Full Stack Engineer — Fieldwork Health | 2018–2021
+Built patient and clinician tools for care coordination. Introduced shared UI patterns and improved release confidence.
+
+Software Engineer — Brightline Digital | 2016–2018
+Shipped responsive commerce and content experiences with design and product teams.
+
+EDUCATION
+B.S. Computer Science — Northwestern University, 2016
+
+SKILLS
+JavaScript, HTML, CSS, React, Angular, Node.js, Python, NestJS, PostgreSQL, MySQL, MongoDB, Git, GitHub, Docker, Generative AI, LLM, RAG
